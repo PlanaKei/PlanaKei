@@ -1,0 +1,58 @@
+CREATE TABLE "public"."biz_scenic_spot" (
+  "id" int8 NOT NULL,
+  "name" varchar(255) COLLATE "pg_catalog"."default",
+  "level" varchar(4) COLLATE "pg_catalog"."default",
+  "province" varchar(255) COLLATE "pg_catalog"."default",
+  "city" varchar(255) COLLATE "pg_catalog"."default",
+  "area" varchar(255) COLLATE "pg_catalog"."default",
+  "address" varchar(255) COLLATE "pg_catalog"."default",
+  "evaluation_time" varchar(255) COLLATE "pg_catalog"."default",
+  "publish_time" varchar(255) COLLATE "pg_catalog"."default",
+  "lng_gcj02" varchar(30) COLLATE "pg_catalog"."default",
+  "lat_gcj02" varchar(30) COLLATE "pg_catalog"."default",
+  "lng_bd09" varchar(30) COLLATE "pg_catalog"."default",
+  "lat_bd09" varchar(30) COLLATE "pg_catalog"."default",
+  "lng_wgs84" varchar(30) COLLATE "pg_catalog"."default",
+  "lat_wgs84" varchar(30) COLLATE "pg_catalog"."default",
+  "geom" "public"."geometry",
+  "publish_link" varchar(255) COLLATE "pg_catalog"."default",
+  CONSTRAINT "pk_biz_scenic_spot" PRIMARY KEY ("id")
+);
+ 
+CREATE INDEX "idx_biz_scenic_spot_geom" ON "public"."biz_scenic_spot" USING gist (
+  "geom" "public"."gist_geometry_ops_2d"
+);
+ 
+COMMENT ON COLUMN "public"."biz_scenic_spot"."id" IS '主键';
+ 
+COMMENT ON COLUMN "public"."biz_scenic_spot"."name" IS '景区名称';
+ 
+COMMENT ON COLUMN "public"."biz_scenic_spot"."level" IS '景区级别';
+ 
+COMMENT ON COLUMN "public"."biz_scenic_spot"."province" IS '所属省份';
+ 
+COMMENT ON COLUMN "public"."biz_scenic_spot"."city" IS '所属城市';
+ 
+COMMENT ON COLUMN "public"."biz_scenic_spot"."area" IS '所属区县';
+ 
+COMMENT ON COLUMN "public"."biz_scenic_spot"."address" IS '地址';
+ 
+COMMENT ON COLUMN "public"."biz_scenic_spot"."evaluation_time" IS '评定时间';
+ 
+COMMENT ON COLUMN "public"."biz_scenic_spot"."publish_time" IS '发布时间';
+ 
+COMMENT ON COLUMN "public"."biz_scenic_spot"."lng_gcj02" IS 'lng_GCJ02';
+ 
+COMMENT ON COLUMN "public"."biz_scenic_spot"."lat_gcj02" IS 'lat_GCJ02';
+ 
+COMMENT ON COLUMN "public"."biz_scenic_spot"."lng_bd09" IS 'lng_BD09';
+ 
+COMMENT ON COLUMN "public"."biz_scenic_spot"."lat_bd09" IS 'lat_BD09';
+ 
+COMMENT ON COLUMN "public"."biz_scenic_spot"."lng_wgs84" IS 'lng_WGS84';
+ 
+COMMENT ON COLUMN "public"."biz_scenic_spot"."lat_wgs84" IS 'lat_WGS84';
+ 
+COMMENT ON COLUMN "public"."biz_scenic_spot"."publish_link" IS '发布链接';
+ 
+COMMENT ON TABLE "public"."biz_scenic_spot" IS '全国风景区信息表';
